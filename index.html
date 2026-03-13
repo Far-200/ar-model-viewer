@@ -12,6 +12,7 @@
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
   </head>
+
   <body>
     <div class="page">
       <header class="hero">
@@ -29,7 +30,9 @@
             src="models/airplane.glb"
             alt="3D Airplane Model"
             ar
-            ar-modes="webxr scene-viewer quick-look"
+            ar-modes="webxr"
+            ar-scale="fixed"
+            xr-environment
             camera-controls
             auto-rotate
             shadow-intensity="1"
@@ -37,13 +40,22 @@
             environment-image="neutral"
             camera-orbit="0deg 75deg 6m"
             field-of-view="45deg"
+            orientation="0deg 0deg 0deg"
           >
             <button slot="ar-button" class="ar-button">View in AR</button>
           </model-viewer>
+
+          <div id="arControls" class="ar-controls">
+            <button id="arGyroBtn" class="ar-control-btn">Enable Gyro</button>
+            <button id="arFlightModeBtn" class="ar-control-btn">
+              Start Flight
+            </button>
+          </div>
         </div>
 
         <div class="info-panel">
           <h2>Project Features</h2>
+
           <ul>
             <li>Interactive 3D airplane model viewer</li>
             <li>Drag to rotate the airplane</li>
@@ -53,6 +65,14 @@
 
           <button id="toggleRotateBtn" class="control-button">
             Pause Auto-Rotate
+          </button>
+
+          <button id="gyroBtn" class="control-button">
+            Enable Gyro Control
+          </button>
+
+          <button id="flightModeBtn" class="control-button">
+            Start Flight Mode
           </button>
         </div>
       </main>

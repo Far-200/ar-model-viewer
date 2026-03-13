@@ -163,3 +163,52 @@ model-viewer {
   line-height: 1.6;
   color: #cbd5e1;
 }
+
+.viewer-card {
+  position: relative;
+}
+
+.ar-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  display: none;
+  gap: 10px;
+  z-index: 20;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ar-control-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(15, 23, 42, 0.88);
+  color: white;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.ar-control-btn:active {
+  transform: scale(0.98);
+}
+
+/* show AR overlay controls only while WebXR AR session is active */
+model-viewer[ar-status="session-started"] + .ar-controls {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .ar-controls {
+    bottom: 74px;
+    width: calc(100% - 24px);
+  }
+
+  .ar-control-btn {
+    flex: 1 1 140px;
+  }
+}
